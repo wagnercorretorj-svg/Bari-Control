@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bari-Control Elite</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 20px; background-color: #f0f2f5; }
+        .card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        button { background-color: #2ecc71; color: white; border: none; padding: 15px; border-radius: 10px; font-size: 18px; width: 100%; cursor: pointer; }
+        .count { font-size: 30px; font-weight: bold; color: #3498db; }
+    </style>
+</head>
+<body>
+    <h1>Bari-Control Elite 🥗</h1>
+    <div class="card">
+        <h2>Água</h2>
+        <p class="count" id="agua">0 ml</p>
+        <button onclick="addAgua()">+ 200ml</button>
+    </div>
+    <div class="card">
+        <h2>Proteína</h2>
+        <p class="count" id="proteina">0 g</p>
+        <button onclick="addProteina()">+ 10g</button>
+    </div>
+    <script>
+        let a = 0; let p = 0;
+        function addAgua() { a += 200; document.getElementById('agua').innerText = a + " ml"; }
+        function addProteina() { p += 10; document.getElementById('proteina').innerText = p + " g"; }
+    </script>
+</body>
+</html>
