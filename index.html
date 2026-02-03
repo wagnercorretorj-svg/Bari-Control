@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Control-Bari | Mentor Santz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="favicon.ico">
+    <style>
+        :root {
+            --verde-mentol: #00E5C3;
+            --azul-sereno: #5EB3FF;
+            --dourado: #C5A059;
+            --texto-escuro: #1A3A36;
+        }
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #F0F7F6; 
+            color: var(--texto-escuro);
+            font-size: 18px; /* Fonte base aumentada */
+        }
+        .card-acessivel { 
+            background: white; 
+            border-radius: 24px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08); 
+            border: 1px solid #E2E8F0;
+        }
+        .btn-grande { 
+            padding: 22px; 
+            font-size: 20px; 
+            font-weight: 800; 
+            border-radius: 20px;
+            transition: transform 0.1s;
+        }
+        .btn-grande:active { transform: scale(0.96); }
+        .texto-alerta { font-size: 22px; font-weight: bold; }
+    </style>
+</head>
+<body class="pb-28">
+
+    <div id="app-main" class="max-w-md mx-auto p-6">
+        
+        <header class="flex flex-col items-center mb-10">
+            <img src="logo.png" alt="Control-Bari" class="w-32 h-32 mb-4 drop-shadow-md">
+            <h1 class="text-3xl font-extrabold text-[#1A5F5A] tracking-tight">CONTROL-BARI</h1>
+            <p class="text-[#C5A059] text-base font-bold tracking-widest uppercase">Mentor Santz AI</p>
+        </header>
+
+        <div class="grid grid-cols-1 gap-6 mb-8">
+            <div class="card-acessivel p-8 flex items-center justify-between active:bg-gray-50" onclick="addProt()">
+                <div class="text-left">
+                    <p class="text-sm font-black text-gray-400 uppercase mb-1">Proteína</p>
+                    <span id="txt-prot" class="text-4xl font-black text-gray-800">0g</span>
+                </div>
+                <div class="bg-[#C5A059] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl font-bold">+</div>
+            </div>
+
+            <div id="card-agua" class="card-acessivel p-8 flex items-center justify-between active:bg-gray-50" onclick="addAgua()">
+                <div class="text-left">
+                    <p class="text-sm font-black text-gray-400 uppercase mb-1">Água (Gole)</p>
+                    <span id="txt-agua" class="text-4xl font-black text-gray-800">0.0L</span>
+                </div>
+                <div class="bg-[#5EB3FF] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl font-bold">+</div>
+            </div>
+        </div>
+
+        <div id="bloqueio-alerta" class="hidden bg-red-600 text-white p-6 rounded-3xl mb-8 text-center animate-pulse">
+            <p class="texto-alerta">⚠️ NÃO BEBA ÁGUA AGORA!</p>
+            <p id="timer-display" class="text-3xl font-mono mt-2">30:00</p>
+            <p class="text-sm mt-2 opacity-90 text-white">Aguarde o tempo da refeição.</p>
+        </div>
+
+        <button onclick="iniciarTimer()" class="w-full bg-[#1A5F5A] text-white btn-grande shadow-xl mb-10 flex items-center justify-center gap-3">
+            <span>🍽️</span> ACABEI DE COMER
+        </button>
+
+        <div class="card-acessivel p-6 border-l-8 border-[#C5A059] bg-[#FFFDF5]">
+            <p class="text-lg font-bold text-gray-800 mb-2">💬 Recado do Santz:</p>
+            <p id="chat-msg" class="text-lg text-gray-700 leading-relaxed italic">"Mastigue bem, devagar e sem pressa. Sua saúde agradece!"</p>
+        </div>
+
+    </div>
+
+    <script>
+        let proteina = 0;
+        let agua = 0;
+        let timerAtivo = false;
+
+        function addProt() {
+            proteina += 5;
+            document.getElementById('txt-prot').innerText = proteina + "g";
+            vibrar();
+        }
+
+        function addAgua() {
+            if (timerAtivo) {
+                alert("PARE! O Mentor Santz não autoriza água durante a refeição. Aguarde o timer.");
+                return;
+            }
+            agua += 0.2;
+            document.getElementById('txt-agua').innerText = agua.toFixed(1) + "L";
+            vibrar();
+        }
+
+        function iniciarTimer() {
+            if(confirm("Você terminou sua refeição agora? O bloqueio de 30 min será ativado.")){
+                timerAtivo = true;
+                document.getElementById('bloqueio-alerta').classList.remove('hidden');
+                document.getElementById('card-agua').style.opacity = '0.3';
+                
+                let tempo = 1800; 
+                const interval = setInterval(() => {
+                    let min = Math.floor(tempo / 60);
+                    let seg = tempo % 60;
+                    document.getElementById('timer-display').innerText = `${min}:${seg < 10 ? '0' : ''}${seg}`;
+                    
+                    if (tempo <= 0) {
+                        clearInterval(interval);
+                        timerAtivo = false;
+                        document.getElementById('bloqueio-alerta').classList.add('hidden');
+                        document.getElementById('card-agua').style.opacity = '1';
+                    }
+                    tempo--;
+                }, 1000);
+            }
+        }
+
+        function vibrar() {
+            if (navigator.vibrate) navigator.vibrate(50);
+        }
+    </script>
+</body>
+</html>
