@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Baricontrol</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Baricontrol</span>
+                </a>
+                <nav class="nav" id="mainNav">
+                    <a href="index.html">Home</a>
+                    <a href="cirurgia.html">Sobre a Cirurgia</a>
+                    <a href="tipos-cirurgia.html">Tipos</a>
+                    <a href="app.html">O App</a>
+                    <a href="depoimentos.html">Depoimentos</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="contato.html" class="active">Contato</a>
+                </nav>
+                <button class="cta-button-header">Baixar App 📱</button>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Fale Conosco 💬</h1>
+            <p>Estamos aqui para ajudar! Entre em contato conosco</p>
+        </div>
+    </section>
+
+    <section class="page-content">
+        <div class="container">
+            <div class="content-wrapper">
+                
+                <div class="content-section">
+                    <h2><i class="fas fa-envelope"></i> Suporte e Dúvidas</h2>
+                    <p>Para dúvidas sobre o app, sugestões ou parcerias, preencha o formulário abaixo. Respondemos em até 24-48 horas úteis.</p>
+                    
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email</h3>
+                            <p><strong>digipontobrasil@gmail.com</strong></p>
+                            <p>Suporte técnico e dúvidas</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <i class="fas fa-clock"></i>
+                            <h3>Tempo de Resposta</h3>
+                            <p><strong>24-48h úteis</strong></p>
+                            <p>Respondemos o mais rápido possível</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <i class="fas fa-handshake"></i>
+                            <h3>Parcerias</h3>
+                            <p><strong>digipontobrasil@gmail.com</strong></p>
+                            <p>Profissionais e clínicas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="disclaimer-box">
+                    <h4><i class="fas fa-exclamation-triangle"></i> AVISO LEGAL</h4>
+                    <p>O Baricontrol é uma ferramenta de <strong>ACOMPANHAMENTO</strong> e não substitui orientação médica profissional.</p>
+                    <ul>
+                        <li>❌ Sempre consulte seu cirurgião bariátrico</li>
+                        <li>❌ Em caso de emergência, procure atendimento médico imediato</li>
+                        <li>❌ As informações aqui são educativas e não constituem diagnóstico</li>
+                        <li>❌ Cada caso é único e requer avaliação individual</li>
+                    </ul>
+                    <br>
+                    <p><strong>O suporte técnico do app NÃO oferece:</strong></p>
+                    <ul>
+                        <li>❌ Diagnósticos médicos</li>
+                        <li>❌ Prescrição de dietas</li>
+                        <li>❌ Recomendações de medicamentos</li>
+                        <li>❌ Orientação sobre cirurgia</li>
+                    </ul>
+                </div>
+
+                <div class="contact-form">
+                    <h3 style="text-align: center; margin-bottom: 2rem; color: var(--gray-900);">Formulário de Contato</h3>
+                    
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Nome Completo *</label>
+                            <input type="text" id="name" name="name" required placeholder="Seu nome">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Assunto *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Selecione um assunto</option>
+                                <option value="duvida-app">Dúvida sobre o App</option>
+                                <option value="duvida-cirurgia">Dúvida sobre Cirurgia</option>
+                                <option value="sugestao">Sugestão</option>
+                                <option value="parceria">Parceria</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensagem *</label>
+                            <textarea id="message" name="message" required placeholder="Descreva sua dúvida ou mensagem em detalhes..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">
+                            <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                        </button>
+                    </form>
+                    
+                    <p style="text-align: center; margin-top: 1.5rem; color: var(--gray-600); font-size: 0.9rem;">
+                        * Campos obrigatórios
+                    </p>
+                </div>
+
+                <div class="content-section" style="margin-top: 3rem;">
+                    <h2><i class="fas fa-question-circle"></i> Antes de Enviar</h2>
+                    <p>Sua dúvida pode já estar respondida! Confira nossas páginas de ajuda:</p>
+                    
+                    <div class="links-grid">
+                        <a href="faq.html" class="related-link">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Perguntas Frequentes</span>
+                        </a>
+                        <a href="app.html" class="related-link">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Como Usar o App</span>
+                        </a>
+                        <a href="cirurgia.html" class="related-link">
+                            <i class="fas fa-stethoscope"></i>
+                            <span>Sobre a Cirurgia</span>
+                        </a>
+                        <a href="formula-sucesso.html" class="related-link">
+                            <i class="fas fa-trophy"></i>
+                            <span>Fórmula do Sucesso</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2><i class="fas fa-handshake"></i> Parcerias e Indicações</h2>
+                    <p>Profissionais de saúde, clínicas, hospitais, marcas de suplementos e influenciadores interessados em parcerias, enviem email para:</p>
+                    <div class="highlight-box">
+                        <p style="text-align: center; font-size: 1.3rem;"><strong>digipontobrasil@gmail.com</strong></p>
+                        <p style="text-align: center; margin-top: 1rem;">📋 Informe: Nome, profissão/empresa, tipo de parceria desejada</p>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2><i class="fas fa-share-alt"></i> Redes Sociais</h2>
+                    <p>Acompanhe nossas novidades e faça parte da comunidade Baricontrol:</p>
+                    
+                    <div class="footer-social" style="justify-content: center; font-size: 2rem; margin-top: 1.5rem;">
+                        <a href="#" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 1.5rem; color: var(--gray-600);">
+                        📱 <strong>@baricontrol</strong> em todas as redes (em breve)
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Baricontrol</span>
+                    </div>
+                    <p class="footer-tagline">Acompanhe sua jornada bariátrica com segurança e sucesso</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Informações</h4>
+                    <ul>
+                        <li><a href="cirurgia.html">Sobre a Cirurgia</a></li>
+                        <li><a href="tipos-cirurgia.html">Tipos de Cirurgias</a></li>
+                        <li><a href="preparativos.html">Preparativos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="app.html">Sobre o App</a></li>
+                    </ul>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-envelope"></i> digipontobrasil@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Baricontrol - Todos os direitos reservados</p>
+                <p class="footer-disclaimer">
+                    <i class="fas fa-info-circle"></i> O Baricontrol é uma ferramenta de acompanhamento e não substitui orientação médica profissional.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Aqui você implementaria o envio real do email
+            // Por enquanto, apenas mostra uma mensagem de sucesso
+            
+            const mailto = `mailto:digipontobrasil@gmail.com?subject=Contato Baricontrol: ${encodeURIComponent(formData.subject)}&body=Nome: ${encodeURIComponent(formData.name)}%0D%0AEmail: ${encodeURIComponent(formData.email)}%0D%0A%0D%0AMensagem:%0D%0A${encodeURIComponent(formData.message)}`;
+            
+            window.location.href = mailto;
+            
+            alert('Seu cliente de email será aberto. Se não abrir automaticamente, envie email para: digipontobrasil@gmail.com');
+        }
+    </script>
+</body>
+</html>

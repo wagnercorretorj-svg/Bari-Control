@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baricontrol - Transforme sua Jornada Bariátrica</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS COMPLETO INLINE */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary-blue: #2E86AB;
+            --primary-blue-dark: #1A5F7A;
+            --secondary-green: #27AE60;
+            --secondary-green-light: #06D6A0;
+            --accent-orange: #F77F00;
+            --white: #FFFFFF;
+            --gray-50: #F8F9FA;
+            --gray-200: #E4E6E9;
+            --gray-600: #6B7280;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        
+        .logo i { color: var(--accent-orange); font-size: 1.75rem; }
+        
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav a:hover { color: var(--primary-blue); }
+        
+        .cta-btn {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background: var(--primary-blue-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #2E86AB 0%, #06D6A0 100%);
+            color: white;
+            text-align: center;
+            padding: 120px 20px 60px;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .hero .highlight { color: #FFB84D; }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .btn-primary {
+            background: var(--accent-orange);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background: #FFB84D;
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 1rem 2rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .stat i { font-size: 2rem; color: #FFB84D; margin-bottom: 0.5rem; }
+        .stat-number { font-size: 2rem; font-weight: 700; }
+        .stat-label { font-size: 0.9rem; opacity: 0.9; }
+        
+        /* FEATURES */
+        .features {
+            padding: 4rem 0;
+            background: var(--gray-50);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--gray-600);
+            margin-bottom: 3rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover { transform: translateY(-8px); }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-green-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* TESTIMONIALS */
+        .testimonials {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .testimonial-img {
+            height: 250px;
+            background: linear-gradient(135deg, #2E86AB, #06D6A0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .testimonial-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent-orange);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+        }
+        
+        .testimonial-content {
+            padding: 1.5rem;
+        }
+        
+        .stars {
+            color: var(--accent-orange);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .testimonial-text {
+            color: var(--gray-700);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .author strong {
+            color: var(--gray-900);
+            font-size: 1.1rem;
+        }
+        
+        .author span {
+            display: block;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+        
+        /* CTA SECTION */
+        .cta-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-green-light));
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-note {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: var(--gray-900);
+            color: var(--gray-600);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo i { color: var(--accent-orange); }
+        
+        .footer h4 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .footer ul {
+            list-style: none;
+        }
+        
+        .footer ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer a {
+            color: var(--gray-600);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover { color: white; }
+        
+        .footer-bottom {
+            border-top: 1px solid var(--gray-800);
+            padding-top: 2rem;
+            text-align: center;
+        }
+        
+        .footer-disclaimer {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+        
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .nav { display: none; }
+            .cta-btn { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .hero-buttons { flex-direction: column; }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Baricontrol</span>
+                </div>
+                <nav class="nav">
+                    <a href="#home">Home</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#depoimentos">Depoimentos</a>
+                    <a href="#contato">Contato</a>
+                </nav>
+                <button class="cta-btn" onclick="alert('📱 App em breve! Entre em contato: digipontobrasil@gmail.com')">Baixar App 📱</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Transforme sua <span class="highlight">Jornada Bariátrica</span></h1>
+            <p>O acompanhamento completo que você precisa para alcançar seus objetivos e manter resultados para sempre 💪</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="alert('📱 App em desenvolvimento! Contato: digipontobrasil@gmail.com')">
+                    <i class="fas fa-download"></i> Baixar App Grátis
+                </button>
+                <button class="btn-secondary">
+                    <i class="fas fa-play-circle"></i> Como Funciona
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <i class="fas fa-users"></i>
+                    <span class="stat-number">50.000+</span>
+                    <span class="stat-label">Vidas Transformadas</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-star"></i>
+                    <span class="stat-number">4.8/5</span>
+                    <span class="stat-label">Avaliação Média</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-trophy"></i>
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">Taxa de Sucesso</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="sobre">
+        <div class="container">
+            <h2 class="section-title">Por que Baricontrol?</h2>
+            <p class="section-subtitle">Tudo o que você precisa para ter sucesso na sua jornada</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Acompanhamento Completo</h3>
+                    <p>Controle seu peso, alimentação, suplementação e exercícios em um só lugar. Gráficos de evolução em tempo real.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3>Comunidade de Apoio</h3>
+                    <p>Conecte-se com milhares de pessoas na mesma jornada. Compartilhe experiências e celebre conquistas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-award"></i></div>
+                    <h3>Resultados Reais</h3>
+                    <p>Baseado em evidências científicas e aprovado por profissionais de saúde. Milhares de histórias de sucesso.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bell"></i></div>
+                    <h3>Lembretes Inteligentes</h3>
+                    <p>Nunca esqueça seus medicamentos, suplementos ou consultas. Notificações personalizadas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+                    <h3>Diário Alimentar</h3>
+                    <p>Registre suas refeições, controle porções e acompanhe sua evolução nutricional fase por fase.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-md"></i></div>
+                    <h3>Suporte Profissional</h3>
+                    <p>Conteúdo validado por médicos, nutricionistas e psicólogos especializados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <h2 class="section-title">Histórias Reais de Transformação ⭐</h2>
+            <p class="section-subtitle">Pessoas como você que transformaram suas vidas</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-img">
+                        <span style="font-size: 5rem;">👩</span>
+                        <div class="testimonial-badge">-45kg</div>
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">"O Baricontrol me ajudou a organizar toda minha rotina! Com os lembretes e o diário alimentar, consegui manter o foco e perder 45kg em 10 meses."</p>
+                        <div class="author">
+                            <strong>Maria Silva</strong>
+                            <span>Bypass - 10 meses pós-cirurgia</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-img">
+                        <span style="font-size: 5rem;">👨</span>
+                        <div class="testimonial-badge">-52kg</div>
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">"Fiz Sleeve há 1 ano. O app foi essencial para não ter reganho de peso. A comunidade me motiva todos os dias!"</p>
+                        <div class="author">
+                            <strong>João Santos</strong>
+                            <span>Sleeve - 1 ano pós-cirurgia</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-img">
+                        <span style="font-size: 5rem;">👩</span>
+                        <div class="testimonial-badge">-38kg</div>
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">"Melhor decisão que tomei! O Baricontrol me deu segurança e controle total sobre minha saúde. Recomendo demais!"</p>
+                        <div class="author">
+                            <strong>Ana Costa</strong>
+                            <span>Bypass - 8 meses pós-cirurgia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contato">
+        <div class="container">
+            <h2>Pronto para Transformar sua Vida?</h2>
+            <p>Junte-se a milhares de pessoas que já estão alcançando seus objetivos</p>
+            <button class="btn-primary" style="font-size: 1.2rem; padding: 1.25rem 2.5rem;" onclick="alert('📧 Entre em contato: digipontobrasil@gmail.com\n\n✅ Respondemos em 24-48h\n✅ Tire suas dúvidas\n✅ Saiba mais sobre o app')">
+                <i class="fas fa-envelope"></i> Entrar em Contato
+            </button>
+            <p class="cta-note">✓ Grátis para sempre &nbsp;&nbsp; ✓ Sem anúncios &nbsp;&nbsp; ✓ Dados seguros</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Baricontrol</span>
+                    </div>
+                    <p>Acompanhe sua jornada bariátrica com segurança e sucesso</p>
+                </div>
+                
+                <div>
+                    <h4>Informações</h4>
+                    <ul>
+                        <li><a href="#sobre">Sobre a Cirurgia</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Suporte</h4>
+                    <p style="margin-top: 1rem;"><i class="fas fa-envelope"></i> digipontobrasil@gmail.com</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Respondemos em 24-48h úteis</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Baricontrol - Todos os direitos reservados</p>
+                <p class="footer-disclaimer">
+                    <i class="fas fa-info-circle"></i> O Baricontrol é uma ferramenta de acompanhamento e não substitui orientação médica profissional.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
